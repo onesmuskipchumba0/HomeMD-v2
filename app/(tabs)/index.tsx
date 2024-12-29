@@ -1,74 +1,84 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+// app/(tabs)/index.tsx
+import { ScrollView, Text, View, TouchableOpacity } from 'react-native';
+import { Link } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+interface QuickActionProps {
+  title: string;
+  description: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  href: string;
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+const QuickAction = ({ title, description, icon, href }: QuickActionProps) => (
+  <Link href={href} asChild>
+    <TouchableOpacity className="flex-row items-center bg-white p-4 rounded-lg mb-3 shadow-sm">
+      <View className="bg-red-50 p-3 rounded-full">
+        <Ionicons name={icon} size={24} color="#f4511e" />
+      </View>
+      <View className="flex-1 ml-4">
+        <Text className="text-lg font-semibold text-gray-800">{title}</Text>
+        <Text className="text-gray-600">{description}</Text>
+      </View>
+      <Ionicons name="chevron-forward" size={24} color="#666" />
+    </TouchableOpacity>
+  </Link>
+);
+
+export default function HomeTab() {
+  return (
+    <ScrollView className="flex-1 bg-gray-50">
+      {/* Disclaimer Banner */}
+      <View className="bg-red-50 p-4 m-4 rounded-lg">
+        <View className="flex-row items-center mb-2">
+          <Ionicons name="warning" size={24} color="#f4511e" />
+          <Text className="ml-2 font-bold text-gray-800">Important Notice</Text>
+        </View>
+        <Text className="text-gray-600">
+          This app provides basic first aid information only. For emergencies, always call your local emergency services immediately.
+        </Text>
+      </View>
+
+      {/* Quick Actions */}
+      <View className="p-4">
+        <Text className="text-lg font-bold text-gray-800 mb-3">Quick Actions</Text>
+        <QuickAction
+          title="Check Symptoms"
+          description="Find first aid advice for common symptoms"
+          icon="medical"
+          href="/(tabs)/symptoms"
+        />
+        <QuickAction
+          title="First Aid Guide"
+          description="Step-by-step first aid procedures"
+          icon="bandage"
+          href="/(tabs)/first-aid"
+        />
+        <QuickAction
+          title="Emergency Contacts"
+          description="Quick access to emergency numbers"
+          icon="call"
+          href="/(tabs)/emergency"
+        />
+      </View>
+
+      {/* Emergency Warning Signs */}
+      <View className="p-4">
+        <Text className="text-lg font-bold text-gray-800 mb-3">Seek Immediate Help For:</Text>
+        {[
+          "Difficulty breathing or shortness of breath",
+          "Chest or upper abdominal pain or pressure",
+          "Fainting, sudden dizziness, weakness",
+          "Changes in vision",
+          "Confusion or changes in mental status",
+          "Any sudden or severe pain"
+        ].map((symptom) => (
+          <View key={symptom} className="flex-row items-center mb-2">
+            <Ionicons name="alert-circle" size={16} color="#f4511e" />
+            <Text className="ml-2 text-gray-600">{symptom}</Text>
+          </View>
+        ))}
+      </View>
+    </ScrollView>
+  );
+}
