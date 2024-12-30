@@ -1,50 +1,62 @@
-# Welcome to your Expo app 👋
+# HomeMD v2
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Description
+HomeMD v2 is a React Native application designed to provide medical services at home. This project aims to offer a seamless and user-friendly experience for users to book and manage home medical appointments.
 
-## Get started
+## Features
+- User authentication and profile management
+- Booking and managing home medical appointments
+- Notifications and reminders
+- Integration with medical service providers
 
-1. Install dependencies
+## Installation
+To get started with the project, follow these steps:
 
-   ```bash
-   npm install
-   ```
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/homemd-v2.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd homemd-v2
+    ```
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-2. Start the app
+## Running the App
+To run the app on your local development environment, use the following commands:
 
-   ```bash
-    npx expo start
-   ```
+- For iOS:
+    ```bash
+    npx react-native run-ios
+    ```
+- For Android:
+    ```bash
+    npx react-native run-android
+    ```
 
-In the output, you'll find options to open the app in a
+## Contributing
+We welcome contributions to improve HomeMD v2. To contribute, please follow these steps:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. Fork the repository.
+2. Create a new branch:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+3. Make your changes and commit them:
+    ```bash
+    git commit -m "Add your commit message"
+    ```
+4. Push to the branch:
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+5. Create a pull request.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contact
+For any questions or inquiries, please contact us at [email@example.com](mailto:email@example.com).
