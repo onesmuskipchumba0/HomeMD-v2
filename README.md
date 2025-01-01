@@ -6,6 +6,8 @@ HomeMD v2 is a React Native application designed to provide medical services at 
 ## Download
 Download the app [here](https://expo.dev/artifacts/eas/rqvGAyq2djnYLgbR53KgK6.apk)
 
+## Screenshots
+
 ## Features
 - User authentication and profile management
 - Booking and managing home medical appointments
